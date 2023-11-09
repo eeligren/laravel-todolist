@@ -12,6 +12,13 @@
                         <br>
                         <span><strong>Created:</strong> {{ $task->created_at }}</span>
                     </div>
+                    @if(!$task->isCompleted())
+                    <form action="/tasks/{{ $task->id }}" method="POST">
+                        @method('PATCH')
+                        @csrf
+                        <button type="submit" class="btn btn-success">Mark as completed</button>
+                    </form>
+                    @endif 
                 </div>
             </div>
         </div>

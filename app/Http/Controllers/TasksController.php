@@ -35,4 +35,18 @@ class TasksController extends Controller
         //Redirects back to home
         return redirect('/');
     }   
+
+    public function update($id) {
+        //Updates database table Task
+        $task = Task::where('id', $id)->first();
+
+        //Set rows completed_at column value to now() time
+        $task->completed_at = now();
+
+        //Save db
+        $task->save();
+
+        //Redirects back to home
+        return redirect('/');
+    }
 }
